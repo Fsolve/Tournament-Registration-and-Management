@@ -1,0 +1,22 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div>
+    <form method="POST" action ="" >
+        {% csrf_token %}
+        {{form.as_p}}
+        <p >Join a team or <a href="{% url 'create-team' %}">create team</a> </p>
+        <p>To join a team, you need to  know the team code</p>
+        <select name="teams" id="teams">
+          {% for t in teams %}
+            <option value="{{t.name}}">{{t.name}}</option>
+          {% endfor %}
+          <input type="number" name="code" id="code" placeholder="Enter the team code">
+        </select> 
+        <input type="submit" value="Submit" />
+    </form>
+
+</div>
+
+
+{% endblock content %}

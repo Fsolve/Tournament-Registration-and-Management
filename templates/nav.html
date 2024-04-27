@@ -1,0 +1,71 @@
+<style>
+    .nav{
+	display: flex;
+    flex-direction: row;
+	position: relative;
+    background-color: #123;
+	background-image: linear-gradient(to bottom, #0003, transparent);
+	border-bottom: 1px solid #0003;
+	box-shadow: 0 0 32px #0003;
+	font-size: 2em;
+	font-weight: 300;
+
+}
+.nav > .nav-items {
+	color: #9ab;
+	padding: .75em;
+	text-align: center;
+	text-decoration: none;
+	transition: all .5s;
+}
+header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+
+}
+
+</style>
+<header >
+    <div class="nav">
+        <a href="" class="nav-items">LOGO</a> 
+
+
+<!-- search -->
+<!-- <form action="">
+    <input type="text" name="q" placeholder="Search Rooms...">
+</form> -->
+
+
+    <a href="#" class="nav-items">Tournaments</a>
+
+    <a href="#" class="nav-items">Games</a>
+    
+<a href="#" class="nav-items">Teams</a>
+
+
+    <a href="#" class="nav-items">About</a>
+
+
+
+
+<a href="{% url 'create-team' %}" class="nav-items">Create Team</a>
+<form action="{% url 'home' %}" class="nav-items">
+    <input type="text" name="q" placeholder="Search Rooms...">
+</form>
+
+
+{% if request.user.is_authenticated %}
+<a href="{% url 'logout' %}" class="nav-items">Logout</a>
+{% else %}
+
+<a href="{% url 'login' %}" class="nav-items">Login</a>
+{% endif %}
+
+
+
+
+
+</div>
+</header>

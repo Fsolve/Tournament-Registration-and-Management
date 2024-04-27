@@ -1,0 +1,18 @@
+
+
+<style>
+    form{
+        margin: auto;
+        background-color: lightpink;
+    }
+</style>
+<div>
+    <form method="POST" action ="" >
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Submit" />
+</form>
+<a href="{{request.META.HTTP_REFERER}}">Go back</a>    
+
+</div>
+

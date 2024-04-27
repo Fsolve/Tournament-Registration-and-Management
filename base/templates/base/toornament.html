@@ -1,0 +1,76 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<style>
+   
+    .container{
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+    }
+    .toors{
+        background-color:#2c3338 ;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 320px;
+    max-width: 20rem;
+    width: 90%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding : 1rem;
+    }
+    .participate{
+    width: 75%;
+    border-radius: 0.25rem;
+    padding: 16px;
+    padding: 1rem;
+    background-color: #ea4c88;
+    color: #eee;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-left: auto;
+    margin-right: auto;
+    }
+    .participate > a{
+        text-decoration : none;
+        color: #eee;
+    }
+
+
+
+</style>
+
+<div class="container">
+
+    <div class="toors">
+        <h2 class="toor-name"> {{toor.name}}   <b>{{toor.game}}</b></h2>
+        <ul class="room-list">
+            <li class="room-items">A brief description: {{toor.description}}</li>
+            <li class="room-items">Prize: {{toor.prize}} DH</li>
+            <li class="room-items">Date : {{toor.date_time}}</li>
+            <li class="room-items">Place: {{toor.place}}</li>
+            <li class="room-items">Total Teams : {{teams_num}}</li>
+        </ul>
+       
+    
+        <div class="participate">
+            <a href="{% url 'participate' toor_id %}">Participate</a>
+
+        </div>
+
+    </div>
+
+    <div>
+        <h3 class="">Teams Paticipating</h3>
+        <hr>
+        {% for team in toor.teams_list %}
+        <h4>{{team.name}}</h4>
+
+        {% endfor %}
+
+    </div>
+
+
+</div>
+
+{% endblock %}
