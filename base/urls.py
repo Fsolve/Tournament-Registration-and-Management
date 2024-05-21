@@ -11,6 +11,6 @@ urlpatterns = [
     path('createTeam/', views.createTeam, name='create-team'),
     path('toornament/<str:pk>', views.toornament, name='toornament'),
     path('participate/<str:pk>', views.participate, name='participate'),
-
+    path('teams', views.teams, name='team'),
 ]
 

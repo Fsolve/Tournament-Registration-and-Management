@@ -1,0 +1,30 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+
+<div class="container">
+
+
+    <h2>Total Number of Teams : {{teams_count}}</h2>
+    <hr>
+    <h3>Teams</h3>
+        {% for team in teams %}
+        <div class="teams">
+                <h5>Name :{{team.name}}</h5>
+                <p>Game :{{team.game}}</p>
+                <p>Leader : {{team.leader}}</p>
+                <p>Players :{% for player in team.players_list %}
+                        <p>@{{player.username}}</p>
+                    {% endfor %}
+                </p>
+               
+            </div>
+        <hr>
+        {% endfor %}
+    
+    </div>
+
+</div>
+
+{% endblock %}

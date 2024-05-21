@@ -102,7 +102,7 @@ def createTeam(request):
 def participate(request, pk):
     form = ParticipateForm()
     toor = Toornament.objects.get(id = pk)
-    teams = Team.objects.filter(game = toor.game)
+    teams = Team.objects.filter()
     if request.method == 'POST':
         team_name = request.POST.get('teams')
         team = Team.objects.get(name = team_name)
@@ -140,3 +140,21 @@ def toornament(request, pk):
     return render(request, 'base/toornament.html', context)
 
 
+
+def profile(request, pk):
+    user = User.objects.get(id = pk) 
+    #find tournaments where user is registered
+    #find teams that user belongs to
+    #if user is leader : display that 
+    user_team = Team.objects.filter(players.name == pk)
+
+
+    context = {}
+    return render(request, 'base/profile.html', context)
+
+
+def teams(request, pk):
+    teams = Team.objects.get(id = pk)
+    teams_count = teams.count()
+    context = {'teams':teams, 'teams_count': teams_count}
+    return render(request, 'base/teams.html', context)

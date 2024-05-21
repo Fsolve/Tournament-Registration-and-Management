@@ -1,22 +1,33 @@
 {% extends 'main.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'style/main.css' %}">
 
 {% block content %}
-<div>
-    <form method="POST" action ="" >
+<h2 class="form-title">Participate</h2>
+<div class="grid">
+    <form method="POST" action =""  class="participate form">
         {% csrf_token %}
         {{form.as_p}}
+        <div class="form__field">
         <p >Join a team or <a href="{% url 'create-team' %}">create team</a> </p>
+      </div>
+        <div class="form__field">
         <p>To join a team, you need to  know the team code</p>
+      </div>
+        <div class="form__field">
         <select name="teams" id="teams">
           {% for t in teams %}
             <option value="{{t.name}}">{{t.name}}</option>
           {% endfor %}
           <input type="number" name="code" id="code" placeholder="Enter the team code">
-        </select> 
+        </select>
+      </div> 
+        <div class="form__field">
         <input type="submit" value="Submit" />
+      </div>
     </form>
 
 </div>
 
 
-{% endblock content %}
+{% endblock %}
